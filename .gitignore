@@ -1,0 +1,6 @@
+.vscode
+testing-project
+.mypy_cache
+.idea
+poetry.lock
+dev-link/
