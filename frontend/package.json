@@ -25,6 +25,7 @@
     "@vue/cli-plugin-unit-jest": "^4.4.1",
     "@vue/cli-service": "^4.4.1",
     "@vue/test-utils": "^1.0.3",
+    "fork-ts-checker-webpack-plugin": "^4.1.6",
     "typescript": "^3.9.3"
   },
   "jest": {
