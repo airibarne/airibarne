@@ -1,13 +1,14 @@
 <template>
-    <div>
-        Hello world!
-    </div>
+    <burger-menu></burger-menu>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import BurgerMenu from '@/components/BurgerMenu.vue';
 
-@Component
+@Component({
+    components: {BurgerMenu},
+})
 export default class Main extends Vue {
 }
 </script>
