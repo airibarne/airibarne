@@ -1,4 +1,5 @@
 import { MainState } from '@/store/main/state';
+import { mutations } from '@/store/main/mutations';
 import { getters } from '@/store/main/getters';
 
 const defaultState: MainState = {
@@ -7,5 +8,6 @@ const defaultState: MainState = {
 
 export const mainModule = {
   state: defaultState,
+  mutations,
   getters,
 };
