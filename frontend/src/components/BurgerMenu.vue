@@ -1,5 +1,5 @@
 <template>
-    <button class="menu-toggle" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+    <button :class="{ 'nav-open' : navOpen}" class="menu-toggle" @mouseenter="mouseEnter" @mouseleave="mouseLeave" @click="navOpen = !navOpen">
         <span class="menu-toggle--hamburger">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" class="burger"><title>Open Menu</title>
                 <path class="burger--wave" d="M100,7.53c-6.25,4.888-18.75,4.888-25,0s-18.75-4.888-25,0-18.75,4.888-25,0S6.25,2.642,0,7.53" style="transform: translateX(-50%);"></path>
@@ -23,6 +23,7 @@
     export default class BurgerMenu extends Vue {
         public done: boolean = false;
         public menuWave;
+        public navOpen: boolean = false;
 
         public mouseEnter() {
             this.menuWave.restart();
@@ -37,6 +38,7 @@
             const that = this;
             this.menuWave = anime({
                 targets: '.burger--wave',
+                duration: 500,
                 translateX: ['0%', '-50%'],
                 easing: 'linear',
                 autoplay: false,
