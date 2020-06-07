@@ -1,5 +1,5 @@
 <template>
-    <button :class="{ 'nav-open' : navOpen}" class="menu-toggle" @mouseenter="mouseEnter" @mouseleave="mouseLeave" @click="navOpen = !navOpen">
+    <button :class="{ 'nav-open' : navOpen }" class="menu-toggle" @mouseenter="mouseEnter" @mouseleave="mouseLeave" @click="toggleNavOpen">
         <span class="menu-toggle--hamburger">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" class="burger"><title>Open Menu</title>
                 <path class="burger--wave" d="M100,7.53c-6.25,4.888-18.75,4.888-25,0s-18.75-4.888-25,0-18.75,4.888-25,0S6.25,2.642,0,7.53" style="transform: translateX(-50%);"></path>
@@ -17,13 +17,18 @@
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
+    import { commitSetNavOpen } from '@/store/main/mutations';
+    import { readNavOpen } from '@/store/main/getters';
     import anime from 'animejs';
 
     @Component
     export default class BurgerMenu extends Vue {
         public done: boolean = false;
         public menuWave;
-        public navOpen: boolean = false;
+
+        get navOpen() {
+            return readNavOpen(this.$store);
+        }
 
         public mouseEnter() {
             this.menuWave.restart();
@@ -32,6 +37,10 @@
 
         public mouseLeave() {
             this.done = true;
+        }
+
+        public toggleNavOpen() {
+            commitSetNavOpen(this.$store, !this.navOpen);
         }
 
         public mounted() {
